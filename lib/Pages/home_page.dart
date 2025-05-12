@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:meu_app_flutter_clone/services/sorteador_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,40 +10,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var numeroSorteado = 0;
-  var qtdSorteio = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meu Primeiro App Flutter", style: GoogleFonts.pacifico()),
+        title: Text("Meu Primeiro App Flutter"),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Tivemos até agora $qtdSorteio sorteios!",
-            style: GoogleFonts.roboto(fontSize: 70),
-          ),
-          Text(
-            numeroSorteado.toString(),
-            style: GoogleFonts.roboto(fontSize: 100),
-          ),
-          Text(
-            "O último número sorteado foi: ___",
-            style: GoogleFonts.roboto(fontSize: 50),
-          ),
-        ],
-      ),
+      body: Center(child: Text(numeroSorteado.toString())),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.monetization_on_outlined),
         onPressed: () {
           setState(() {
-            qtdSorteio++;
             numeroSorteado = SorteadorService.sortearNumero();
+            
+
           });
+          ultimoSorteio = numeroSorteado;
           debugPrint(numeroSorteado.toString());
         },
       ),
